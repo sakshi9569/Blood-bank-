@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const colors = require("colors");
 
 const connectDB = async () => {
@@ -11,4 +11,4 @@ const connectDB = async () => {
         
     }
 };
-module.exports = mongoose.connectDB;
+module.exports = connectDB;
