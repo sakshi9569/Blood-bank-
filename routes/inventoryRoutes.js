@@ -8,7 +8,7 @@ const {
 
 
 const router=express.Router()
-//routers
+//routes
 //add inventory||post
 router.post('/create-inventory', authMiddleware,createInventoryController);
 //get all blood records 

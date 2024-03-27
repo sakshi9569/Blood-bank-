@@ -1,10 +1,13 @@
 //create inventory 
 
+const inventoryModel = require("../models/inventoryModel");
+const userModel = require("../models/userModel");
+
 const createInventoryController=async(req,res)=> {
     try{
         const {email,inventoryType}=req.body
        //validation
-       const user=await userModel.findOne({email})
+       const user=await userModel.findOne({email});
        if(!user){
          throw new Error('user not found')
        }
@@ -15,12 +18,12 @@ const createInventoryController=async(req,res)=> {
         throw new Error('not a hospital')
        }
        //save record
-       const inventory=new inventoryModel(req.body)
+       const inventory = new inventoryModel(req.body)
        await inventory.save()
-        return res.status(201).send({
-            succes:true,
-            message:'NEW BLOOD RECORD ADDED'
-        })
+       return res.status(201).send({
+        succes:true,
+        message:'New Blood Record Added'
+       })
     }
 
     catch(error){
