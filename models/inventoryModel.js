@@ -1,40 +1,44 @@
-const mongoose= require('mongoose')
+const mongoose = require('mongoose')
 
-const inventorySchema=new mongoose.Schema({
-       inventoryType:{
-        type:String,
-        required:[true,'inventory type required'],
-        enum:['in','out']
-       },
-       bloodGroup:{
-        type:String,
-        required:[true,'blood group is required'],
-        enum:['O+','O-','AB+','AB-','A+','A-','B+','B-']
-       },
-       quantity:{
-        type:Number,
-        require:[true,'blood quanity is require']
-       },
-       organisation:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:'users',
-        required:[true,'organisation is require']
-       },
-       hospital:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:'users',
-        required:function(){
+const inventorySchema = new mongoose.Schema({
+    inventoryType: {
+        type: String,
+        required: [true, 'inventory type required'],
+        enum: ['in', 'out']
+    },
+    bloodGroup: {
+        type: String,
+        required: [true, 'blood group is required'],
+        enum: ['O+', 'O-', 'AB+', 'AB-', 'A+', 'A-', 'B+', 'B-']
+    },
+    quantity: {
+        type: Number,
+        require: [true, 'blood quanity is require']
+    },
+    donarEmail: {
+        type: String,
+        required: [true, "Donar Email is require"],
+    },
+    organisation: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'users',
+        required: [true, 'organisation is require']
+    },
+    hospital: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'users',
+        required: function () {
             return this.inventoryType === 'out'
         }
-       },
-       donar:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:'users',
-        required:function(){
-            return this.inventoryType==='in';
-        },
-       },
+    },
+    donar: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'users',
+        // required: function () {
+        //     return this.inventoryType === 'in';
+        // },
+    },
 },
-{timeStamps:true}
+    { timeStamps: true }
 );
-module.exports=mongoose.model('inventory',inventorySchema)
+module.exports = mongoose.model('inventory', inventorySchema)
