@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import InputType from "./InputType";
-import { Link } from "react-router-dom";
-import { handleLogin, handleRegister } from "../../../services/authService";
 
 const Form = ({ formType, submitBtn, formTitle }) => {
   const [email, setEmail] = useState("");
@@ -13,27 +11,10 @@ const Form = ({ formType, submitBtn, formTitle }) => {
   const [website, setWebsite] = useState("");
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
+
   return (
     <div>
-      <form
-        onSubmit={(e) => {
-          if (formType === "login")
-            return handleLogin(e, email, password, role);
-          else if (formType === "register")
-            return handleRegister(
-              e,
-              name,
-              role,
-              email,
-              password,
-              phone,
-              organisationName,
-              address,
-              hospitalName,
-              website
-            );
-        }}
-      >
+      <form>
         <h1 className="text-center">{formTitle}</h1>
         <hr />
         <div className="d-flex mb-3">
@@ -45,9 +26,8 @@ const Form = ({ formType, submitBtn, formTitle }) => {
               id="donarRadio"
               value={"donar"}
               onChange={(e) => setRole(e.target.value)}
-              defaultChecked
             />
-            <label htmlFor="adminRadio" className="form-check-label">
+            <label htmlFor="donarRadio" className="form-check-label">
               Donar
             </label>
           </div>
@@ -91,7 +71,8 @@ const Form = ({ formType, submitBtn, formTitle }) => {
             </label>
           </div>
         </div>
-        {/* switch statement */}
+
+        {/*switch statement*/}
         {(() => {
           //eslint-disable-next-line
           switch (true) {
@@ -104,7 +85,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
                     inputType={"email"}
                     name={"email"}
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={(e) => setEmail(e.terget.value)}
                   />
                   <InputType
                     labelText={"Password"}
@@ -112,7 +93,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
                     inputType={"password"}
                     name={"password"}
                     value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={(e) => setPassword(e.terget.value)}
                   />
                 </>
               );
@@ -127,7 +108,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
                       inputType={"text"}
                       name={"name"}
                       value={name}
-                      onChange={(e) => setName(e.target.value)}
+                      onChange={(e) => setName(e.terget.value)}
                     />
                   )}
                   {role === "organisation" && (
@@ -137,7 +118,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
                       inputType={"text"}
                       name={"organisationName"}
                       value={organisationName}
-                      onChange={(e) => setOrganisationName(e.target.value)}
+                      onChange={(e) => setOrganisationName(e.terget.value)}
                     />
                   )}
                   {role === "hospital" && (
@@ -147,7 +128,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
                       inputType={"text"}
                       name={"hospitalName"}
                       value={hospitalName}
-                      onChange={(e) => setHospitalName(e.target.value)}
+                      onChange={(e) => setHospitalName(e.terget.value)}
                     />
                   )}
 
@@ -157,7 +138,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
                     inputType={"email"}
                     name={"email"}
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={(e) => setEmail(e.terget.value)}
                   />
                   <InputType
                     labelText={"Password"}
@@ -165,15 +146,15 @@ const Form = ({ formType, submitBtn, formTitle }) => {
                     inputType={"password"}
                     name={"password"}
                     value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={(e) => setPassword(e.terget.value)}
                   />
                   <InputType
-                    labelText={"website"}
+                    labelText={"Website"}
                     labelFor={"forWebsite"}
                     inputType={"text"}
                     name={"website"}
                     value={website}
-                    onChange={(e) => setWebsite(e.target.value)}
+                    onChange={(e) => setWebsite(e.terget.value)}
                   />
                   <InputType
                     labelText={"Address"}
@@ -181,7 +162,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
                     inputType={"text"}
                     name={"address"}
                     value={address}
-                    onChange={(e) => setAddress(e.target.value)}
+                    onChange={(e) => setAddress(e.terget.value)}
                   />
                   <InputType
                     labelText={"Phone"}
@@ -189,7 +170,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
                     inputType={"text"}
                     name={"phone"}
                     value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
+                    onChange={(e) => setPhone(e.terget.value)}
                   />
                 </>
               );
@@ -197,19 +178,8 @@ const Form = ({ formType, submitBtn, formTitle }) => {
           }
         })()}
 
-        <div className="d-flex flex-row justify-content-between">
-          {formType === "login" ? (
-            <p>
-              Not registerd yet ? Register
-              <Link to="/register"> Here !</Link>
-            </p>
-          ) : (
-            <p>
-              ALready Usser Please
-              <Link to="/login"> Login !</Link>
-            </p>
-          )}
-          <button className="btn btn-primary" type="submit">
+        <div className="d-flex">
+          <button className="btn btn-primary" type="submit ">
             {submitBtn}
           </button>
         </div>

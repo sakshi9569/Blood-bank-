@@ -3,7 +3,6 @@
   padding: 0;
   box-sizing: border-box;
 }
-
 /*
 --------FORM----
 */
@@ -17,55 +16,4 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-}
-
-/*==============
-=======loader
-===========*/
-
-.loader-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.3);
-}
-
-.loader {
-  width: 48px;
-  height: 48px;
-  border: 5px solid white;
-  border-radius: 50%;
-  border-bottom-color: aquamarine;
-  display: inline-block;
-  box-sizing: border-box;
-  animation: rotation 1s linear infinite;
-}
-
-@keyframes rotation {
-  0% {
-    transform: rotate(0deg);
-
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-
-
-/* ==============
-----------navbar
-========== */
-
-.navbar {
-  background-color: black !important;
-  color: white !important;
-}
-
-.nav-link,
-.navbar-brand {
-  background-color: black !important;
-  color: white !important;
 }
